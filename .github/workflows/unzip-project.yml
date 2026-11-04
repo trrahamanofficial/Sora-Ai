@@ -1,0 +1,86 @@
+
+name: Extract SORA Project ZIP
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository
+        uses: actions/checkout@v4
+
+      - name: Extract project files
+        run: |
+          python - <<'PY'
+          import zipfile
+          import pathlib
+          import shutil
+          import tempfile
+
+          repo = pathlib.Path(".").resolve()
+          archives = list(repo.glob("*.zip"))
+
+          valid = []
+          for archive in archives:
+              try:
+                  with zipfile.ZipFile(archive) as z:
+                      names = z.namelist()
+                      if any(n.endswith("web/package.json") for n in names):
+                          valid.append((len(names), archive))
+              except Exception:
+                  pass
+
+          if not valid:
+              raise SystemExit("No valid SORA project ZIP found.")
+
+          _, archive = max(valid, key=lambda x: x[0])
+          print("Using:", archive.name)
+
+          with tempfile.TemporaryDirectory() as temp:
+              temp = pathlib.Path(temp)
+
+              with zipfile.ZipFile(archive) as z:
+                  for item in z.infolist():
+                      target = (temp / item.filename).resolve()
+                      if temp not in target.parents and target != temp:
+                          raise SystemExit("Unsafe ZIP path detected.")
+                  z.extractall(temp)
+
+              web_files = list(temp.rglob("web/package.json"))
+              if not web_files:
+                  raise SystemExit("Web project not found.")
+
+              source = web_files[0].parent.parent
+
+              for item in source.iterdir():
+                  destination = repo / item.name
+
+                  if item.name == ".git":
+                      continue
+
+                  if item.is_dir():
+                      shutil.copytree(item, destination, dirs_exist_ok=True)
+                  else:
+                      shutil.copy2(item, destination)
+
+          print("SORA project extraction completed.")
+          PY
+
+      - name: Save extracted files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Extract SORA project files"
+            git push
+          fi
