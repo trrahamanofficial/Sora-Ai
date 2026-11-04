@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">সোরা</string>
+    <string name="app_subtitle">মাল্টি-এআই ভয়েস অ্যাসিস্ট্যান্ট</string>
+    <string name="login_title">সোরায় সাইন ইন করুন</string>
+    <string name="register_title">অ্যাকাউন্ট তৈরি করুন</string>
+    <string name="email_hint">ইমেইল এড্রেস</string>
+    <string name="password_hint">পাসওয়ার্ড</string>
+    <string name="full_name_hint">পুরো নাম</string>
+    <string name="sign_in">সাইন ইন</string>
+    <string name="sign_up">সাইন আপ</string>
+    <string name="sign_out">সাইন আউট</string>
+    <string name="switch_to_register">নতুন অ্যাকাউন্ট প্রয়োজন? সাইন আপ করুন</string>
+    <string name="switch_to_login">আগে থেকেই অ্যাকাউন্ট আছে? সাইন ইন করুন</string>
+
+    <!-- Voice Screen -->
+    <string name="start_voice">ভয়েস শুরু করুন</string>
+    <string name="stop_voice">ভয়েস থামান</string>
+    <string name="voice_standby">ভয়েস স্ট্যান্ডবাই</string>
+    <string name="mic_active">মাইক্রোফোন সক্রিয় • শুনছি</string>
+    <string name="sora_speaking">সোরা কথা বলছে</string>
+    <string name="mic_permission_needed">ভয়েস ইনপুটের জন্য মাইক্রোফোন পারমিশন প্রয়োজন।</string>
+    <string name="grant_permission">অনুমতি দিন</string>
+    <string name="language_bengali">বাংলা (Bangla)</string>
+    <string name="language_english">English</string>
+    <string name="chat_hint">মেসেজ লিখুন অথবা ভয়েস ব্যবহার করুন…</string>
+    <string name="new_chat">নতুন চ্যাট</string>
+    <string name="open_chat">চ্যাট খুলুন</string>
+    <string name="auto_provider">⚡ অটো মাল্টি-এআই রাউটার</string>
+</resources>

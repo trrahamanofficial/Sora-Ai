@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+set -eu
+GRADLE_VERSION=8.2.1
+if command -v gradle >/dev/null 2>&1; then exec gradle "$@"; fi
+BASE="${GRADLE_USER_HOME:-$HOME/.gradle}/sora-bootstrap/gradle-$GRADLE_VERSION"
+if [ ! -x "$BASE/bin/gradle" ]; then
+  mkdir -p "$(dirname "$BASE")"
+  ARCHIVE="$(dirname "$BASE")/gradle-$GRADLE_VERSION-bin.zip"
+  if command -v curl >/dev/null 2>&1; then curl -fL "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip" -o "$ARCHIVE"
+  elif command -v wget >/dev/null 2>&1; then wget -O "$ARCHIVE" "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip"
+  else echo 'Install Gradle or curl/wget to bootstrap Gradle.' >&2; exit 1; fi
+  command -v unzip >/dev/null 2>&1 || { echo 'unzip is required.' >&2; exit 1; }
+  unzip -q "$ARCHIVE" -d "$(dirname "$BASE")"
+fi
+exec "$BASE/bin/gradle" "$@"

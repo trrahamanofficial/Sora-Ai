@@ -1,0 +1,5 @@
+# Copy to local.properties. Do not commit local.properties.
+sdk.dir=/ABSOLUTE/PATH/TO/ANDROID/SDK
+SORA_BACKEND_URL=https://YOUR_RENDER_BACKEND.onrender.com/
+SORA_SUPABASE_URL=https://rkwnxsstnnqzjscpoxnd.supabase.co
+SORA_SUPABASE_ANON_KEY=sb_publishable_qx6UIy__TOu9DOnyYPhJ9A_gnMRBern

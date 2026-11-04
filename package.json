@@ -1,0 +1,15 @@
+{
+  "name": "sora-a-to-z",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Unified SORA backend, web AI interface, and Android application",
+  "scripts": {
+    "backend:install": "npm --prefix backend install",
+    "backend:build": "npm --prefix backend run build",
+    "backend:test": "npm --prefix backend test",
+    "web:install": "npm --prefix web install",
+    "web:typecheck": "npm --prefix web run typecheck",
+    "web:build": "npm --prefix web run build",
+    "android:debug": "cd android && ./gradlew assembleDebug"
+  }
+}

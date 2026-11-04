@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#07090E</color>
+    <color name="bg_surface">#0F172A</color>
+    <color name="bg_surface_elevated">#1E293B</color>
+    <color name="cyan_400">#22D3EE</color>
+    <color name="cyan_500">#06B6D4</color>
+    <color name="cyan_900">#164E63</color>
+    <color name="purple_500">#A855F7</color>
+    <color name="purple_900">#581C87</color>
+    <color name="blue_500">#3B82F6</color>
+    <color name="emerald_500">#10B981</color>
+    <color name="rose_500">#F43F5E</color>
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_muted">#64748B</color>
+    <color name="divider">#1E293B</color>
+</resources>
